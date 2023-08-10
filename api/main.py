@@ -22,7 +22,7 @@ class handler(BaseHTTPRequestHandler):
         for header, value in target_response_headers:
             self.send_header(header, value)   
         self.end_headers()
-        self.wfile.write('hello'.encode())
+        self.wfile.write(target_response_body)
         return
 
 
