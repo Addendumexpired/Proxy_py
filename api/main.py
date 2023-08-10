@@ -6,7 +6,7 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
 
         target_host = "www.baidu.com"
-        target_path = self.path             #api/main.py
+        target_path = self.path             #当前目录路径
 
 
         # 创建到目标服务器的连接
@@ -23,5 +23,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(str(target_path).encode())
+        self.wfile.write(str(target_response_body).encode())
         return
