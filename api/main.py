@@ -13,7 +13,7 @@ class handler(BaseHTTPRequestHandler):
         }
 
 
-        target_url = "https://GitHub.com/"  # 目标 URL
+        target_url = "https://sshocean.com/"  # 目标 URL
        
         # 发起 GET 请求
         response = requests.get(target_url + self.path, headers=headers)
