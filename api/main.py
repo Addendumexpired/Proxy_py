@@ -23,10 +23,10 @@ class handler(BaseHTTPRequestHandler):
         response_status = response.status_code
 
         
-        soup = BeautifulSoup(response_content, "html.parser")
-        element_to_modify = soup.find(id="su")
-        if element_to_modify:
-            element_to_modify["value"] = "hello"
+     #   soup = BeautifulSoup(response_content, "html.parser")
+     #   element_to_modify = soup.find(id="su")
+     #   if element_to_modify:
+     #       element_to_modify["value"] = "hello"
         
         
 
@@ -35,7 +35,7 @@ class handler(BaseHTTPRequestHandler):
             
         self.send_header("Content-type", response.headers["Content-type"])
         self.end_headers()
-        self.wfile.write(str(self.path).encode())
+        self.wfile.write(response_content)
 
         return
 
