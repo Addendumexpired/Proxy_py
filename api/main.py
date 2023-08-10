@@ -1,23 +1,26 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import http.client
 
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        text = """<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"> <!-- 声明字符编码为UTF-8 -->
-    <title>简单的HTML示例</title>
-</head>
-<body>
-    <h1>欢迎来到我的网页</h1>
-    <p>这是一个简单的HTML示例，用于演示基本的HTML标记。</p>
-    <a href="https://www.example.com">访问示例网站</a>
-</body>
-</html>
-"""
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
+
+        target_host = "www.baidu.com"
+        target_path = self.path
+
+        # 创建到目标服务器的连接
+        target_connection = http.client.HTTPConnection(target_host)
+        target_connection.request("GET", target_path)
+
+        # 获取目标服务器的响应
+        target_response = target_connection.getresponse()
+        target_response_headers = target_response.getheaders()
+        target_response_body = target_response.read()
+
+        # 发送目标服务器的响应给客户端
+        self.send_response(target_response.status)
+        for header, value in target_response_headers:
+            self.send_header(header, value)
         self.end_headers()
-        self.wfile.write(text.encode('utf-8'))  # 使用UTF-8编码
+        self.wfile.write(target_response_body)
         return
