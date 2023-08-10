@@ -24,10 +24,3 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(target_response_body)
         return
-
-
-
-
-
-
-
