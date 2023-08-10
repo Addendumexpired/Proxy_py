@@ -6,7 +6,8 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
 
         target_host = "www.baidu.com"
-        target_path = self.path
+        target_path = self.path             #api/main.py
+
 
         # 创建到目标服务器的连接
         target_connection = http.client.HTTPConnection(target_host)
