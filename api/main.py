@@ -5,9 +5,13 @@ import json
 
 class handler(BaseHTTPRequestHandler):
  
-    def do_GET(self,event, context):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type','text/plain')
+        self.end_headers()
+     
         target = http.client.HTTPConnection("www.baidu.com")
-        target.request("GET", event['path'])
+        target.request("GET", self.path)
 
     # 获取目标服务器的响应
         response = target.getresponse()
@@ -20,4 +24,4 @@ class handler(BaseHTTPRequestHandler):
             "body": response.read().decode('utf-8')
         }
 
-        return proxy_response
+        return
