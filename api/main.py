@@ -23,11 +23,18 @@ class handler(BaseHTTPRequestHandler):
         response_status = response.status_code
 
         
-     #   soup = BeautifulSoup(response_content, "html.parser")
-     #   element_to_modify = soup.find(id="su")
-     #   if element_to_modify:
-     #       element_to_modify["value"] = "hello"
+
+
+
+
+
+        soup = BeautifulSoup(response_content, "html.parser")
+        recaptcha_element = soup.find("div", class_="g-recaptcha")
         
+        if recaptcha_element:
+            new_data_sitekey = "6LfkF5cnAAAAAJ9oC_mQ8G3NTIjvGn7QnFXNXEsm"  # 替换为您想要的新 Site Key
+            recaptcha_element["data-sitekey"] = new_data_sitekey
+
         
 
         self.send_response(response_status)
@@ -35,7 +42,7 @@ class handler(BaseHTTPRequestHandler):
             
         self.send_header("Content-type", response.headers["Content-type"])
         self.end_headers()
-        self.wfile.write(response_content)
+        self.wfile.write(str(soup).encode())
 
         return
 
