@@ -1,13 +1,12 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-
 class handler(BaseHTTPRequestHandler):
 
-  def do_GET(self):
-    
-    text ="""<!DOCTYPE html>
+    def do_GET(self):
+        text = """<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8"> <!-- 声明字符编码为UTF-8 -->
     <title>简单的HTML示例</title>
 </head>
 <body>
@@ -17,10 +16,8 @@ class handler(BaseHTTPRequestHandler):
 </body>
 </html>
 """
-    self.send_response(200)
-    self.send_header('Content-type', 'text/html')
-    self.end_headers()
-    self.wfile.write(text.encode())
-    return
-
-
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(text.encode('utf-8'))  # 使用UTF-8编码
+        return
