@@ -25,6 +25,4 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(target_response_body)
         return
 
-if __name__ == "__main__":
-    http_server = HTTPServer(('', int(8888)), handler)
-    http_server.serve_forever() 
+
