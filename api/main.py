@@ -18,10 +18,9 @@ class handler(BaseHTTPRequestHandler):
         target_response_headers = target_response.getheaders()
         target_response_body = target_response.read()
 
-        # 发送目标服务器的响应给客户端
-        self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Content-type', 'text/plain')
+        self.send_response(target_response.status)
+        for header, value in target_response_headers:
+            self.send_header(header, value)   
         self.end_headers()
-        self.wfile.write(str(target_response_body).encode())
+        self.wfile.write(target_response_body)
         return
