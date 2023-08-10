@@ -6,6 +6,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/html')
         self.end_headers()
-        test = """fff"""
-        self.wfile.write(test.encode('utf-8'))
+        
+        self.wfile.write("hello".encode('utf-8'))
         return
