@@ -1,28 +1,54 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import http.client
+import requests
+from bs4 import BeautifulSoup
+
 
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+        }
 
-        target_host = "www.baidu.com"
-        target_path = self.path             #当前目录路径
 
+        target_url = "https://sshocean.com/"  # 目标 URL
+       
+        # 发起 GET 请求
+        response = requests.get(target_url + self.path, headers=headers)
 
-        # 创建到目标服务器的连接
-        target_connection = http.client.HTTPConnection(target_host)
-        target_connection.request("GET", target_path)
+        # 获取响应内容和状态码
+        response_content = response.content
+        response_status = response.status_code
 
-        # 获取目标服务器的响应
-        target_response = target_connection.getresponse()
-        target_response_headers = target_response.getheaders()
-        target_response_body = target_response.read()
+        
+        soup = BeautifulSoup(response_content, "html.parser")
+        element_to_modify = soup.find(id="su")
+        if element_to_modify:
+            element_to_modify["value"] = "hello"
+        
+        
 
-        self.send_response(target_response.status)
-        for header, value in target_response_headers:
-            self.send_header(header, value)   
+        self.send_response(response_status)
+
+            
+        self.send_header("Content-type", response.headers["Content-type"])
         self.end_headers()
-        self.wfile.write(target_response_body)
+        self.wfile.write(str(soup).encode())
+
         return
 
 
+
+    
+
+ 
+       
+
+       
+
+  
+
+        
+    
