@@ -23,5 +23,5 @@ class handler(BaseHTTPRequestHandler):
             "headers": response_headers,
             "body": response.read().decode('utf-8')
         }
-
+        self.wfile.write(proxy_response.encode('utf-8'))
         return
