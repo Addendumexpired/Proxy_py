@@ -24,3 +24,9 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(target_response_body)
         return
+
+if __name__ == "__main__":
+    server_address = ("0.0.0.0", 14220)
+    httpd = HTTPServer(server_address, handler)
+    print("Server is running at http://0.0.0.0:14220/")
+    httpd.serve_forever()
