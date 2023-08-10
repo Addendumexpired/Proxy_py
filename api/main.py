@@ -26,7 +26,5 @@ class handler(BaseHTTPRequestHandler):
         return
 
 if __name__ == "__main__":
-    server_address = ("0.0.0.0", 14220)
-    httpd = HTTPServer(server_address, handler)
-    print("Server is running at http://0.0.0.0:14220/")
-    httpd.serve_forever()
+    http_server = HTTPServer(('', int(8888)), handler)
+    http_server.serve_forever() 
