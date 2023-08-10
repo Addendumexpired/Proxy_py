@@ -32,7 +32,7 @@ class handler(BaseHTTPRequestHandler):
         recaptcha_element = soup.find("div", class_="g-recaptcha")
         
         if recaptcha_element:
-            new_data_sitekey = "6LfkF5cnAAAAAJ9oC_mQ8G3NTIjvGn7QnFXNXEsm"  # 替换为您想要的新 Site Key
+            new_data_sitekey = "6Lf0aZcnAAAAAFiZw7HxYVrEoMc9bQ5xwktLZbej"  # 替换为您想要的新 Site Key
             recaptcha_element["data-sitekey"] = new_data_sitekey
 
         
