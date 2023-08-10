@@ -35,7 +35,7 @@ class handler(BaseHTTPRequestHandler):
             
         self.send_header("Content-type", response.headers["Content-type"])
         self.end_headers()
-        self.wfile.write(str(self.path).encode())
+        self.wfile.write(response_content)
 
         return
 
