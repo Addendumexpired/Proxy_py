@@ -15,7 +15,7 @@ class handler(BaseHTTPRequestHandler):
         }
 
         url1 = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
-        response1 = requests.get(url1, stream=True)
+        response1 = requests.get(url1, allow_redirects=False)
 
         redirect_url = response1.headers['Location']
         response2 = requests.get(redirect_url, headers=headers)
