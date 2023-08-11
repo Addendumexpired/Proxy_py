@@ -6,37 +6,45 @@ import re
 
 class handler(BaseHTTPRequestHandler):
     
+
+    
+
+    
     def do_GET(self):
         headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         } 
 
 
-        target_url = "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master"
-       
-           
-        response = requests.get(target_url, headers=headers, stream=True)
+        target_url = "https://github.com/"
+        raw_url = "https://raw.githubusercontent.com/" #raw文件
         
-    
-            
-        #self.send_response(200)
-       # self.send_header("Content-Type","text/plain")
-        #self.end_headers()
+
+
+        match_raw = re.match(r"/([^/]+)/([^/]+)/raw/([^/]+)/([^/]+)", self.path) #单个文件都是raw
         
-       # self.wfile.write(str(len(response.content)).encode('utf-8'))
+        
+
+
+
+        if match_raw:
+            response = requests.get(raw_url + f"/{match_raw.group(1)}/{match_raw.group(2)}/{match_raw.group(3)}/{match_raw.group(4)}", headers=headers)
+        else:
+            response = requests.get(target_url + self.path, headers=headers)
+
+        
+
+        # 获取响应内容和状态码
+        response_content = response.content
+        response_status = response.status_code
+
+        
+        self.send_response(response_status)
 
             
-        self.send_response(200)
-        self.send_header("Content-Disposition", "attachment; filename=freev2-master.zip")
-        self.send_header("Content-Type", "application/zip")
+        self.send_header("Content-type", response.headers["Content-type"])
         self.end_headers()
-       
-        self.wfile.write(response.content[1:4500000])
+        self.wfile.write(response_content)
 
-        self.send_response(200)
-        self.send_header("Content-Disposition", "attachment; filename=freev2-master.zip")
-        self.send_header("Content-Type", "application/zip")
-        self.end_headers()
-        self.wfile.write(response.content[4500000:5000000])
         return
