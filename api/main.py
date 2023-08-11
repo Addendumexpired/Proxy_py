@@ -15,12 +15,13 @@ class handler(BaseHTTPRequestHandler):
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         }
 
-
+        url1 = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
+        response1 = requests.get(url1, allow_redirects=False)
        
       
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        self.wfile.write('Hello, world!'.encode('utf-8'))
+        self.wfile.write(str(response1.headers['Location']).encode('utf-8'))
 
         return
