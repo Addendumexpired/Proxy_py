@@ -27,7 +27,7 @@ class handler(BaseHTTPRequestHandler):
                 self.send_header("Content-Length", len(response2.content))
                 self.end_headers()
 
-                chunk_size = 8192  # Adjust the chunk size as needed
+                chunk_size = 4096 # Adjust the chunk size as needed
                 for i in range(0, len(response2.content), chunk_size):
                     self.wfile.write(response2.content[i:i + chunk_size])
         return
