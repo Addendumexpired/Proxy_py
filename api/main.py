@@ -17,21 +17,12 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        target_url = "https://github.com/"
-        raw_url = "https://raw.githubusercontent.com/" #raw文件
+        target_url = "https://youtube.com/"
+
         
 
-
-        match_raw = re.match(r"/([^/]+)/([^/]+)/raw/([^/]+)/([^/]+)", self.path) #单个文件都是raw
         
-        
-
-
-
-        if match_raw:
-            response = requests.get(raw_url + f"/{match_raw.group(1)}/{match_raw.group(2)}/{match_raw.group(3)}/{match_raw.group(4)}", headers=headers)
-        else:
-            response = requests.get(target_url + self.path, headers=headers)
+        response = requests.get(target_url + self.path, headers=headers)
 
         
 
