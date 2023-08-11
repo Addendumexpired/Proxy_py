@@ -21,19 +21,19 @@ class handler(BaseHTTPRequestHandler):
         if self.path == "/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip":
        
         
-            response = requests.get(target_url, headers=headers)
-
+            response = requests.get(target_url + self.path , headers=headers)
+            
         
             response_content = response.content
             response_status = response.status_code
 
        
 
-            self.send_response(response_status)
+            self.send_response(200)
 
             
-            self.send_header("Content-type", response.headers["Content-type"])
+            self.send_header("Content-type",text/plain)
             self.end_headers()
-            self.wfile.write(response_content)
+            self.wfile.write("hello".encode('utf-8'))
 
             return
