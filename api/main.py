@@ -31,7 +31,6 @@ class handler(BaseHTTPRequestHandler):
           
             self.send_header(k,v)
         
-        self.send_header('', '')
 
 
         
