@@ -16,24 +16,11 @@ class handler(BaseHTTPRequestHandler):
         }
 
 
-        target_url = "https://github.com/"
-
-        if self.path == "/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip":
        
-        
-            response = requests.get(target_url + self.path , headers=headers)
-            
-        
-            response_content = response.content
-            response_status = response.status_code
+      
+        self.send_response(200)
+        self.send_header('Content-type','text/plain')
+        self.end_headers()
+        self.wfile.write('Hello, world!'.encode('utf-8'))
 
-       
-
-            self.send_response(200)
-
-            
-            self.send_header("Content-type",text/plain)
-            self.end_headers()
-            self.wfile.write("hello".encode('utf-8'))
-
-            return
+        return
