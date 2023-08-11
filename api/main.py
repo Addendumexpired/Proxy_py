@@ -33,5 +33,5 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
        
         self.wfile.write(response.content[1:4500000])
-        self.wfile.write(response.content[4500000:4500001])
+        self.wfile.write(response.content[4500000:5000000])
         return
