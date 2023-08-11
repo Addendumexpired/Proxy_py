@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         }
 
-        # 请求网址1，获取重定向的位置
+      
         url1 = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
         response1 = requests.get(url1, allow_redirects=False)
 
@@ -20,22 +20,13 @@ class handler(BaseHTTPRequestHandler):
             # 请求网址2
             response2 = requests.get(redirect_url, headers=headers)
 
-            if response2.status_code == 200:
-                self.send_response(200)
-                self.send_header("Content-type", "application/zip")
-                self.send_header("Content-Disposition", "attachment; filename=master.zip")
-                self.send_header("Content-Length", len(response2.content))
-                self.end_headers()
+            
+        elf.send_response(200)
 
-                chunk_size = 8192  # Adjust the chunk size as needed
-                for i in range(0, len(response2.content), chunk_size):
-                    self.wfile.write(response2.content[i:i + chunk_size])
-            else:
-                self.send_response(500)
-                self.end_headers()
-                self.wfile.write(b"Error fetching content from URL2")
-        else:
-            self.send_response(500)
-            self.end_headers()
-            self.wfile.write(b"Error fetching content from URL1")
+            
+        self.send_header("Content-type", response1.headers["Content-type"])
+        self.end_headers()
+        self.wfile.write(response1)
+
+            
         return
