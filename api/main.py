@@ -31,6 +31,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-Disposition", "attachment; filename=freev2-master.zip")
         self.send_header("Content-Type", "application/zip")
         self.end_headers()
-        self.wfile.write(response.content[1:3718592])
+        self.wfile.write(response.content[1:4500000])
 
         return
