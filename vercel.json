@@ -6,7 +6,7 @@
     }]
   ,
   "routes": [
-       { "src": "pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", "dest": "https://github.com/hello" }，
+       { "src": "/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", "dest": "https://github.com/hello" }，
     { "src": "/(.*)", "dest": "/api/main.py" }
        
   ]
