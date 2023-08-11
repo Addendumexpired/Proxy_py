@@ -34,8 +34,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('', '')
 
 
-        self.end_headers()
-        for chunk in response.iter_content(chunk_size=1024):  # Adjust the chunk size as needed
-            self.wfile.write(chunk)
+        
+        self.wfile.write(response.content[1:10])
 
         return
