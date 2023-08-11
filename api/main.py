@@ -13,22 +13,21 @@ class handler(BaseHTTPRequestHandler):
         url1 = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
         response1 = requests.get(url1, allow_redirects=False)
 
-        if response1.status_code == 302 and 'Location' in response1.headers:
-            # 获取重定向的位置
-            redirect_url = response1.headers['Location']
+        
+            
+        redirect_url = response1.headers['Location']
 
             # 请求网址2
-            response2 = requests.get(redirect_url, headers=headers)
+        response2 = requests.get(redirect_url, headers=headers)
 
-            if response2.status_code == 200:
-                self.send_response(200)
-                self.send_header("Content-type", "application/zip")
-                self.send_header("Content-Disposition", "attachment; filename=master.zip")
-                self.send_header("Content-Length", len(response2.content))
-                self.end_headers()
+            
+        self.send_response(200)
+        self.send_header("Content-type", "application/zip")
+        self.send_header("Content-Disposition", "attachment; filename=master.zip")
+        self.send_header("Content-Length", len(response2.content))
+        self.end_headers()
 
-                chunk_size = 4096 # Adjust the chunk size as needed
-                for i in range(0, len(response2.content), chunk_size):
-                    self.wfile.write(response2.content[i:i + chunk_size])
+                
+        self.wfile.write(response2.content)
         return
 
