@@ -16,38 +16,24 @@ class handler(BaseHTTPRequestHandler):
         }
 
 
-        target_url = "https://baidu.com/"
+        target_url = "https://github.com/"
+
+        if self.path == "/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip":
        
-        # 发起 GET 请求
-        response = requests.get(target_url + self.path, headers=headers)
-
-        # 获取响应内容和状态码
-        response_content = response.content
-        response_status = response.status_code
-
-        soup = BeautifulSoup(response_content, 'html.parser')
-        body = soup.find('body')
-        if body:
-              
         
-            script_code = """
-                <script>
-                    // 找到百度搜索按钮元素
-                    var searchButton = document.getElementById("su");
-                    // 添加点击事件处理程序
-                    searchButton.addEventListener("click", function(event) {
-                        event.preventDefault(); // 阻止默认行为
-                        alert("按钮被点击了！");
-                    });
-                </script>
-            """
-            body.append(BeautifulSoup(script_code, 'html.parser'))
+            response = requests.get(target_url, headers=headers)
 
-        self.send_response(response_status)
+        
+            response_content = response.content
+            response_status = response.status_code
+
+       
+
+            self.send_response(response_status)
 
             
-        self.send_header("Content-type", response.headers["Content-type"])
-        self.end_headers()
-        self.wfile.write(str(soup).encode('utf-8'))
+            self.send_header("Content-type", response.headers["Content-type"])
+            self.end_headers()
+            self.wfile.write(response_content)
 
-        return
+            return
