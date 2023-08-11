@@ -27,9 +27,7 @@ class handler(BaseHTTPRequestHandler):
 
         
         
-        self.send_header("Content-type", "application/zip")
-        self.send_header("Content-Disposition", "attachment; filename=master.zip")
-        self.end_headers()
+      
         
         return
 
