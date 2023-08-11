@@ -18,13 +18,16 @@ class handler(BaseHTTPRequestHandler):
            
         response = requests.get(target_url, headers=headers, stream=True)
         
-        self.send_response(200)
-        self.send_header("Content-Disposition","attachment; filename=freev2-master.zip")
-        self.send_header("Content-Type","application/zip")
-        self.end_headers()
+       
         
-        chunk_size = 4718592  # 4.5MB in bytes
-        for chunk in response.iter_content(chunk_size=chunk_size):
-            self.wfile.write(chunk)
+       # chunk_size = 100  # 4.5MB in bytes
+     #   for chunk in response.iter_content(chunk_size=chunk_size):
+            
+            
+        self.send_response(200)
+        self.send_header("Content-Type","text/plain")
+        self.end_headers()
+        self.wfile.write(str(chunk_size).encode('utf-8')))
+        
 
         return
