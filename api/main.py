@@ -50,3 +50,4 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(response_content)
 
         return
+        
