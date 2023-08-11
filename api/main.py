@@ -20,14 +20,15 @@ class handler(BaseHTTPRequestHandler):
         
        
         
-       # chunk_size = 100  # 4.5MB in bytes
-     #   for chunk in response.iter_content(chunk_size=chunk_size):
+      
             
             
         self.send_response(200)
         self.send_header("Content-Type","text/plain")
         self.end_headers()
-        self.wfile.write(str(response.iter_content()[0]).encode('utf-8'))
+        chunk_size = 4718592  # 4.5MB in bytes
+        for chunk in response.iter_content(chunk_size=chunk_size):
+            self.wfile.write(str(chunk).encode('utf-8'))
         
 
 
