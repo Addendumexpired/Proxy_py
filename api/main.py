@@ -30,5 +30,10 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(str(response2.content[1:30]).encode('utf-8'))
 
+        if response2.status_code == 200:
+                self.send_response(200)
+                self.send_header("Content-type", "application/zip")
+                self.send_header("Content-Disposition", "attachment; filename=master.zip")
+                self.end_headers()
         
         return
