@@ -18,19 +18,19 @@ class handler(BaseHTTPRequestHandler):
            
         response = requests.get(target_url, headers=headers, stream=True)
         
-       
-        
-      
+    
             
+        #self.send_response(200)
+       # self.send_header("Content-Type","text/plain")
+        #self.end_headers()
+        
+       # self.wfile.write(str(len(response.content)).encode('utf-8'))
+
             
         self.send_response(200)
-        self.send_header("Content-Type","text/plain")
+        self.send_header("Content-Disposition", "attachment; filename=freev2-master.zip")
+        self.send_header("Content-Type", "application/zip")
         self.end_headers()
-        
-        self.wfile.write(str(len(response.content)).encode('utf-8') + b" ")
-
-            
-        
-
+        self.wfile.write(response.content[1:10000])
 
         return
