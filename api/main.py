@@ -38,3 +38,4 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(500)
             self.end_headers()
             self.wfile.write(b"Error fetching content from URL1")
+        return
