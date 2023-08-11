@@ -29,6 +29,7 @@ class handler(BaseHTTPRequestHandler):
         chunk_size = 4718592  # 4.5MB in bytes
         for chunk in response.iter_content(chunk_size=chunk_size):
             self.wfile.write(str(chunk).encode('utf-8'))
+            break
         
 
 
