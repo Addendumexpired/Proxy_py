@@ -17,11 +17,13 @@ class handler(BaseHTTPRequestHandler):
 
         url1 = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
         response1 = requests.get(url1, allow_redirects=False)
-       
+
+        redirect_url = response1.headers['Location']
+        response2 = requests.get(redirect_url, headers=headers)
       
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        self.wfile.write(str(response1.headers['Location']).encode('utf-8'))
+        self.wfile.write(str(response2.content).encode('utf-8'))
 
         return
