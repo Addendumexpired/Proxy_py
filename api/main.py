@@ -14,7 +14,7 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        response = requests.get("https://github.com/", headers=headers)
+        response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
 
         self.send_response(200)
