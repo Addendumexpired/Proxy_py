@@ -7,7 +7,7 @@
   ,
   "routes": [
     
-    { "src": "/(.*)", "dest": "/api/main.py" }
+    { "src": "/(.*)", "dest": "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master" }
        
   ]
 }
