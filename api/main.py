@@ -17,9 +17,12 @@ class handler(BaseHTTPRequestHandler):
         response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
 
+
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
         self.wfile.write("hello".encode('utf-8'))
+        self.wfile.write("hellomm".encode('utf-8'))
 
         return
+response.headers["Location"]
