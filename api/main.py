@@ -19,7 +19,7 @@ class handler(BaseHTTPRequestHandler):
         st = ""
         s = [12,13,14,15]
         for i in s:
-            st += str(i)
+            st += str(i) + "\n"
 
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
