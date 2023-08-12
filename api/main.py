@@ -14,7 +14,7 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        target_url = "https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip"
+        target_url = "https://baidu.com"
         response = requests.get(target_url, headers=headers)
 
         
