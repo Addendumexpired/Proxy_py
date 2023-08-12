@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import re
 
 
+
 class handler(BaseHTTPRequestHandler):
     
     def do_GET(self):
@@ -17,9 +18,9 @@ class handler(BaseHTTPRequestHandler):
 
 
         self.send_response(302)
-        self.send_header("Content-Length", response.headers["Content-Length"])
-        self.send_header("Content-Type", response.headers["Content-type"])
-        self.send_header("Location", response.headers["Location"])
+        self.send_header("Content-Length", "0")
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Location", "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master")
         self.end_headers()
 
         html_content = """
