@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         } 
 
-        target_url = "https://baidu.com"
+        target_url = "https://www.baidu.com"
         response = requests.get(target_url, headers=headers, stream=True)
         
         response_status = response.status_code
