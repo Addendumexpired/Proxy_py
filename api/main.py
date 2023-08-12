@@ -23,11 +23,11 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Location", "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master")
         self.end_headers()
 
-        html_content = """
+        html_content = f"""
         <!DOCTYPE html>
         <html>
         <head>
-            <title>Simple HTML Page</title>
+            <title>{response.status_code}</title>
         </head>
         <body>
             <h1>Hello, World!</h1>
