@@ -22,20 +22,20 @@ class handler(BaseHTTPRequestHandler):
         s = ""
 
 
-        attrs = dir(t)
+        attrs = dir(response)
 
 
         for attr in attrs:
             if not attr.startswith("__"):  # 排除以双下划线开头的属性
                 try:
-                    attr_value = str(getattr(t, attr))
+                    attr_value = str(getattr(response, attr))
                     if isinstance(attr_value, str) and len(attr_value) > 100:
                         attr_value = attr_value[:30] + "..."
-                    s += f"\nt.{attr}: {attr_value}\n"
+                    s += f"\nresponse.{attr}: {attr_value}\n"
                 except Exception as e:
                     pass
         
-        print(s)
+
 
 
 
