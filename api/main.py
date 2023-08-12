@@ -16,24 +16,34 @@ class handler(BaseHTTPRequestHandler):
 
         response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
+       
+
+
         s = ""
-        attrs = dir(response)
+
+
+        attrs = dir(t)
 
 
         for attr in attrs:
-            if not attr.startswith("__"):
+            if not attr.startswith("__"):  # 排除以双下划线开头的属性
                 try:
-                    attr_value = getattr(response, attr)
-                    s += f"t.{attr}: {attr_value}\n\n"
+                    attr_value = str(getattr(t, attr))
+                    if isinstance(attr_value, str) and len(attr_value) > 100:
+                        attr_value = attr_value[:30] + "..."
+                    s += f"\nt.{attr}: {attr_value}\n"
                 except Exception as e:
                     pass
+        
+        print(s)
+
 
 
 
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write(str(s).encode('utf-8'))
+        self.wfile.write(s.encode('utf-8'))
 
 
         return
