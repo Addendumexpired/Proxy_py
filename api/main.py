@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
         response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
         st = ""
-        s = [12,13,14,15]
+        s = response.history
         for i in s:
             st += str(i) + "\n"
 
