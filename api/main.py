@@ -9,23 +9,33 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
         } 
 
 
-        response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
+    #    response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
-        # 获取响应内容和状态码
-        response_content = response.content
-        response_status = response.status_code
 
-        
-        self.send_response(response_status)
-
-        
-            
-        self.send_header("Content-type", response.headers["Content-type"])
+        self.send_response(302)
+        self.send_header("Content-Length", "0")
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Location", "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master")
         self.end_headers()
-        self.wfile.write(response_content)
+
+        html_content = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Simple HTML Page</title>
+        </head>
+        <body>
+            <h1>Hello, World!</h1>
+            <p>This is a simple HTML page.</p>
+        </body>
+        </html>
+        """
+        
+        self.wfile.write(html_content.encode('utf-8'))
+
 
         return
