@@ -13,7 +13,7 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        response = requests.get("https://baidu.com/", headers=headers)
+        response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
 
         # 获取响应内容和状态码
         response_content = response.content
