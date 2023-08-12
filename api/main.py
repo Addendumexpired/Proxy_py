@@ -22,5 +22,4 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(str("hello" + response.headers["Location"]).encode('utf-8'))
 
-
         return
