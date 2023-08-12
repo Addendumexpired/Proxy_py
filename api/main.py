@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        target_url = "https://youtube.com/"
+        target_url = "github.com"
 
         
 
