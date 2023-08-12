@@ -18,23 +18,9 @@ class handler(BaseHTTPRequestHandler):
 
 
         self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Type", "text/plain")
         self.end_headers()
-
-        html_content = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>{response.status_code}</title>
-        </head>
-        <body>
-            <h1>Hello, World!</h1>
-            <p>This is a simple HTML page.</p>
-        </body>
-        </html>
-        """
-        
-        self.wfile.write(html_content.encode('utf-8'))
+        self.wfile.write(str(response.status_code).encode('utf-8'))
 
 
         return
