@@ -25,6 +25,6 @@ class handler(BaseHTTPRequestHandler):
         for k,v in response.headers.items():
             self.send_header(k,v)
         self.end_headers()
-        self.wfile.write("")
+        self.wfile.write(b"")
 
         return
