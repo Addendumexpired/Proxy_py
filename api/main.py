@@ -1,3 +1,9 @@
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import requests
+from bs4 import BeautifulSoup
+import re
+
+
 class handler(BaseHTTPRequestHandler):
     
     def do_GET(self):
