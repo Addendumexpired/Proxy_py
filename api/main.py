@@ -14,11 +14,27 @@ class handler(BaseHTTPRequestHandler):
 
 
         response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers,allow_redirects=False )
-        self.send_response(200)
-        self.send_header("Content-Type", "text/plain")
+
+        self.send_response(response.status_code) #302
+        self.send_header("Content-Length", response.headers["Content-Length"]) #0
+        self.send_header("Content-Type", response.headers["Content-type"]) #text/html; charset=utf-8
+        self.send_header("Location", response.headers["Location"]) #https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master
         self.end_headers()
         
-        self.wfile.write(str(response.headers["Location"]).encode('utf-8'))
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>{response.status_code}</title>
+        </head>
+        <body>
+            <h1>Hello, World!</h1>
+            <p>This is a simple HTML page.</p>
+        </body>
+        </html>
+        """
+        
+        self.wfile.write(html_content.encode('utf-8'))
 
 
         return
@@ -26,8 +42,8 @@ class handler(BaseHTTPRequestHandler):
 
 
 
-       # self.send_response(response.status_code) #302
-       # self.send_header("Content-Length", response.headers["Content-Length"]) #0
-       # self.send_header("Content-Type", response.headers["Content-type"]) #text/html; charset=utf-8
-       # self.send_header("Location", response.headers["Location"])
+     
+
+        #self.send_response(200)
+        #self.send_header("Content-Type", "text/plain")
        # self.end_headers()
