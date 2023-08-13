@@ -24,8 +24,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "application/octet-stream")
         self.end_headers()
 
-        for chunk in response.iter_content(chunk_size=4096):
-                self.wfile.write(chunk)
+        self.wfile.write(response.content[1:20000])
         
         return
 
