@@ -14,27 +14,14 @@ class handler(BaseHTTPRequestHandler):
         } 
 
 
-        response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers)
-
-       
-
-
-        s = ""
-
-
-
-
-
-        
-
-
+        response = requests.get("https://github.com/pojiezhiyuanjun/freev2/archive/refs/heads/master.zip", headers=headers,allow_redirects=False)
 
 
 
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write(s.encode('utf-8'))
+        self.wfile.write(str(response.status_code).encode('utf-8'))
 
 
         return
