@@ -15,9 +15,13 @@ class handler(BaseHTTPRequestHandler):
        
         response = requests.get(target_url, headers=headers,stream=True)
 
-        self.send_response(200)
+        total = 60315618
+      
+        self.send_response(206)
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Content-Disposition", "attachment; filename=test.zip")
+        self.send_header("Content-Length", str(total))
         self.send_header("Content-type", "application/octet-stream")
-        self.send_header("Content-Length", response.headers.get("Content-Length"))
         self.end_headers()
 
         for chunk in response.iter_content(chunk_size=4096):
