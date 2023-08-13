@@ -13,13 +13,30 @@ class handler(BaseHTTPRequestHandler):
 
         target_url = "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master"
        
-        response = requests.get(target_url, headers=headers)
+        response = requests.get(target_url, headers=headers,stream=True)
         
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write(str(self.headers.get("Range")).encode('utf-8'))
+        self.wfile.write(str(response.headers.get("Content-Length")).encode('utf-8'))
         return
+
+'''
+        if response.status_code == 200:
+            self.send_response(200)
+            self.send_header("Content-type", "application/octet-stream")
+            self.send_header("Content-Length", response.headers.get("Content-Length"))
+            self.end_headers()
+
+            for chunk in response.iter_content(chunk_size=4096):
+                self.wfile.write(chunk)
+
+
+'''
+
+
+
+
 '''
         range_header = self.headers.get("Range")
         if range_header:
