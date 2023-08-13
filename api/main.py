@@ -12,7 +12,7 @@ class handler(BaseHTTPRequestHandler):
         target_url = "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master"
        
         response = requests.get(target_url, headers=headers)
-
+'''
         range_header = self.headers.get("Range")
         if range_header:
             start, end = range_header.strip("bytes=").split("-")
@@ -34,7 +34,12 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(response.content[start:end+1])
         else:
             self.wfile.write(response.content)
+'''
 
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
+        self.end_headers()
+        self.wfile.write("hello".encode('utf-8'))
         return
 
 
@@ -42,6 +47,4 @@ class handler(BaseHTTPRequestHandler):
 
      
 
-        #self.send_response(200)
-        #self.send_header("Content-Type", "text/plain")
-       # self.end_headers()
+        
