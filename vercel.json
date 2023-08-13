@@ -6,7 +6,7 @@
         }]
       ,
       "routes": [
-         { "src": "/kky", "dest": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/199570071/8e83f100-3d17-462f-beef-b77102ab3267?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230813T060309Z&X-Amz-Expires=300&X-Amz-Signature=108aa80a933fb472bea4f01dbb4788111aacf755ec2d62a968ef6d17edcc2f69&X-Amz-SignedHeaders=host&actor_id=130726953&key_id=0&repo_id=199570071&response-content-disposition=attachment%3B%20filename%3Dzz_v2rayN-With-Core-SelfContained.7z&response-content-type=application%2Foctet-stream" },
+         { "src": "/kky", "dest": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/199570071/8e83f100-3d17-462f-beef-b77102ab3267?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230813T061155Z&X-Amz-Expires=300&X-Amz-Signature=ae66e715a0ef7a8c3310e25a9136aaa75e6126e214cc258e41f3b1218c0525f1&X-Amz-SignedHeaders=host&actor_id=130726953&key_id=0&repo_id=199570071&response-content-disposition=attachment%3B%20filename%3Dzz_v2rayN-With-Core-SelfContained.7z&response-content-type=application%2Foctet-stream" },
         { "src": "/(.*)", "dest": "https://github.com/$1" }
            
       ]
