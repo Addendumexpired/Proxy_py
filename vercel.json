@@ -6,8 +6,8 @@
         }]
       ,
       "routes": [
-         { "src": "/:user/:project/archive/refs/heads/:version.:zip", "dest": "https://codeload.github.com/:user/:project/zip/refs/heads/:version" },
-        { "src": "/(.*)", "dest": "https://github.com/$1" }
+        
+        { "src": "/(.*)", "dest": "/api/main.py" }
            
       ]
     }
