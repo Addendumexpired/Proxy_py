@@ -24,7 +24,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "application/octet-stream")
         self.end_headers()
 
-        self.wfile.write(response.content[1:20000])
+        self.wfile.write(response.content)
         
         return
 
