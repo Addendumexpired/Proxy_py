@@ -1,4 +1,4 @@
-  {
+{
     "builds": [
         {
           "src": "/api/main.py",
@@ -6,7 +6,8 @@
         }]
       ,
       "routes": [
-        { "src": "/(.*)", "dest": "/api/main.py" }
+         { "src": "/kky", "dest": "https://objects.githubusercontent.com/github-production-release-asset-2e65be/199570071/8e83f100-3d17-462f-beef-b77102ab3267?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230813T054711Z&X-Amz-Expires=300&X-Amz-Signature=db0457b6ddd44e25ccb336870cc6f7016159b3bc6f45e423e11f556a1f8af7ff&X-Amz-SignedHeaders=host&actor_id=130726953&key_id=0&repo_id=199570071&response-content-disposition=attachment%3B%20filename%3Dzz_v2rayN-With-Core-SelfContained.7z&response-content-type=application%2Foctet-stream" },
+        { "src": "/(.*)", "dest": "https://github.com/$1" }
            
       ]
     }
