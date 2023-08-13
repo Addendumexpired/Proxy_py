@@ -14,10 +14,11 @@ class handler(BaseHTTPRequestHandler):
         target_url = "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master"
        
         response = requests.get(target_url, headers=headers)
+        
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write("hello".encode('utf-8'))
+        self.wfile.write(str(self.headers.get("Range")).encode('utf-8'))
         return
 '''
         range_header = self.headers.get("Range")
