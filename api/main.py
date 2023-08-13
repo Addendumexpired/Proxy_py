@@ -14,11 +14,15 @@ class handler(BaseHTTPRequestHandler):
         target_url = "https://codeload.github.com/pojiezhiyuanjun/freev2/zip/refs/heads/master"
        
         response = requests.get(target_url, headers=headers,stream=True)
-        
+
         self.send_response(200)
-        self.send_header("Content-Type", "text/plain")
+        self.send_header("Content-type", "application/octet-stream")
+        self.send_header("Content-Length", response.headers.get("Content-Length"))
         self.end_headers()
-        self.wfile.write(str(response.headers.get("Content-Length")).encode('utf-8'))
+
+        for chunk in response.iter_content(chunk_size=4096):
+                self.wfile.write(chunk)
+        
         return
 
 '''
@@ -31,7 +35,10 @@ class handler(BaseHTTPRequestHandler):
             for chunk in response.iter_content(chunk_size=4096):
                 self.wfile.write(chunk)
 
-
+self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
+        self.end_headers()
+        self.wfile.write(str(response.headers.get("Content-Length")).encode('utf-8'))
 '''
 
 
