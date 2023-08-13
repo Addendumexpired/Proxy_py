@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
         
-        self.wfile.write(str(response.status_code).encode('utf-8'))
+        self.wfile.write(str(response.headers["Content-Length"]).encode('utf-8'))
 
 
         return
@@ -26,7 +26,7 @@ class handler(BaseHTTPRequestHandler):
 
 
 
-       # self.send_response(response.status_code)
+       # self.send_response(response.status_code) #302
        # self.send_header("Content-Length", response.headers["Content-Length"])
        # self.send_header("Content-Type", response.headers["Content-type"])
        # self.send_header("Location", response.headers["Location"])
