@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
         
-        self.wfile.write(str(response.headers["Content-type"]).encode('utf-8'))
+        self.wfile.write(str(response.headers["Location"]).encode('utf-8'))
 
 
         return
